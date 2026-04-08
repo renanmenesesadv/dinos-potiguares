@@ -1,0 +1,20 @@
+{
+  "name": "Dinossauros Potiguares - Cordel da Pré-História",
+  "short_name": "Dinos Potiguares",
+  "description": "Um passeio interativo pelos dinossauros do Rio Grande do Norte — Feira de Ciências",
+  "start_url": "./dinos-potiguares_1.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FDF5E6",
+  "theme_color": "#2C1810",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦕</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["education", "kids"]
+}
