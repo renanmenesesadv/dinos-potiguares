@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#2C1810">
+<meta name="description" content="Dinossauros Potiguares - Um Cordel da Pré-História do Rio Grande do Norte. Feira de Ciências.">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232C1810'/><text y='70' x='50' text-anchor='middle' font-size='60'>🦕</text></svg>">
+<title>🦕 Dinossauros Potiguares - Cordel da Pré-História</title>
+<style>
+/* Offline-safe fonts — no internet needed */
+
+:root {
+  --cordel-bg: #FDF5E6;
+  --cordel-paper: #F5E6C8;
+  --cordel-brown: #5C3317;
+  --cordel-dark: #2C1810;
+  --cordel-red: #C41E3A;
+  --cordel-orange: #D2691E;
+  --cordel-green: #2E8B57;
+  --cordel-blue: #1E5B8C;
+  --cordel-purple: #6B3FA0;
+  --cordel-yellow: #DAA520;
+  --cordel-cream: #FFF8DC;
+  --shadow: 0 4px 20px rgba(44,24,16,0.15);
+  --shadow-lg: 0 8px 40px rgba(44,24,16,0.2);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, 'Segoe UI', Tahoma, Verdana, sans-serif;
+  background: var(--cordel-bg);
+  color: var(--cordel-dark);
+  overflow-x: hidden;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--cordel-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+nav button {
+  background: transparent;
+  border: 2px solid var(--cordel-yellow);
+  color: var(--cordel-yellow);
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+nav button:hover, nav button.active {
+  background: var(--cordel-yellow);
+  color: var(--cordel-dark);
+  transform: scale(1.05);
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 2rem 3rem;
+  background: linear-gradient(180deg, #2C1810 0%, #5C3317 40%, #8B5E3C 70%, var(--cordel-bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0 60 Q150 0 300 60 T600 60 T900 60 T1200 60 V120H0Z' fill='%23FDF5E6'/%3E%3C/svg%3E") no-repeat bottom center;
+  background-size: cover;
+}
+
+.hero-dinos {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  animation: heroFloat 4s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.hero-dino-icon {
+  font-size: 5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  animation: dinoWiggle 2s ease-in-out infinite;
+}
+.hero-dino-icon:nth-child(2) { animation-delay: 0.3s; }
+.hero-dino-icon:nth-child(3) { animation-delay: 0.6s; }
+@keyframes dinoWiggle {
+  0%,100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--cordel-yellow);
+  text-shadow: 3px 3px 0 var(--cordel-dark), 0 0 30px rgba(218,165,32,0.3);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .subtitle {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 1.4rem;
+  color: var(--cordel-cream);
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .tap-hint {
+  margin-top: 2rem;
+  color: var(--cordel-yellow);
+  font-size: 1rem;
+  animation: pulse 2s infinite;
+  position: relative;
+  z-index: 1;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.05)} }
+
+.scroll-arrow {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  font-size: 2.5rem;
+  color: var(--cordel-yellow);
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+}
+@keyframes bounce {
+  0%,100%{ transform:translateY(0) } 50%{ transform:translateY(12px) }
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 0.3rem;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.section-title span {
+  position: relative;
+  z-index: 1;
+}
+.section-subtitle {
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  color: var(--cordel-brown);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== CORDEL SECTION ===== */
+#cordel {
+  background: var(--cordel-paper);
+  max-width: 100%;
+  padding: 3rem 1rem;
+  border-top: 8px solid var(--cordel-brown);
+  border-bottom: 8px solid var(--cordel-brown);
+  position: relative;
+}
+#cordel::before, #cordel::after {
+  content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+  display: block;
+  text-align: center;
+  color: var(--cordel-brown);
+  font-size: 0.7rem;
+  letter-spacing: 0.5rem;
+  padding: 0.5rem;
+}
+
+.cordel-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.cordel-stanza {
+  text-align: center;
+  margin: 1.5rem auto;
+  padding: 1.2rem 1.5rem;
+  opacity: 1;
+  position: relative;
+  border-left: 4px solid var(--cordel-red);
+  border-right: 4px solid var(--cordel-red);
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+  -webkit-animation: fadeInUp 0.6s ease both;
+  animation: fadeInUp 0.6s ease both;
+}
+.cordel-stanza:nth-child(2) { -webkit-animation-delay: 0.1s; animation-delay: 0.1s; }
+.cordel-stanza:nth-child(3) { -webkit-animation-delay: 0.2s; animation-delay: 0.2s; }
+.cordel-stanza:nth-child(4) { -webkit-animation-delay: 0.3s; animation-delay: 0.3s; }
+.cordel-stanza:nth-child(5) { -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
+.cordel-stanza:nth-child(6) { -webkit-animation-delay: 0.5s; animation-delay: 0.5s; }
+.cordel-stanza:nth-child(7) { -webkit-animation-delay: 0.6s; animation-delay: 0.6s; }
+.cordel-stanza:nth-child(8) { -webkit-animation-delay: 0.7s; animation-delay: 0.7s; }
+.cordel-stanza:nth-child(9) { -webkit-animation-delay: 0.8s; animation-delay: 0.8s; }
+.cordel-stanza:nth-child(10) { -webkit-animation-delay: 0.9s; animation-delay: 0.9s; }
+
+@-webkit-keyframes fadeInUp {
+  from { opacity: 0; -webkit-transform: translateY(25px); transform: translateY(25px); }
+  to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cordel-stanza .stanza-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  animation: dinoWiggle 3s ease-in-out infinite;
+}
+
+.cordel-stanza p {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--cordel-dark);
+  font-style: italic;
+}
+
+.cordel-stanza .stanza-num {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cordel-red);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.cordel-title-block {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.cordel-title-block h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--cordel-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.cordel-title-block .author {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  color: var(--cordel-red);
+  font-size: 0.95rem;
+  margin-top: 0.3rem;
+}
+
+/* ===== DINO CARDS ===== */
+.dino-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.dino-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+  cursor: pointer;
+  position: relative;
+}
+.dino-card:hover, .dino-card:active {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.dino-card-header {
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.dino-card-header .dino-emoji {
+  font-size: 5rem;
+  display: block;
+  animation: dinoWiggle 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+.dino-card-header h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: 0.5rem;
+}
+.dino-card-header .sci-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.dino-card-body {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.dino-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.dino-stat {
+  background: var(--cordel-cream);
+  padding: 0.5rem 0.7rem;
+  border-radius: 10px;
+  text-align: center;
+}
+.dino-stat .label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+.dino-stat .value {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.dino-card-body .desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.dino-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 0.5rem;
+}
+
+.card-herb { border-top: 5px solid var(--cordel-green); }
+.card-herb .dino-card-header { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); }
+.card-herb .dino-badge { background: var(--cordel-green); color: white; }
+
+.card-carn { border-top: 5px solid var(--cordel-red); }
+.card-carn .dino-card-header { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); }
+.card-carn .dino-badge { background: var(--cordel-red); color: white; }
+
+.card-fly { border-top: 5px solid var(--cordel-blue); }
+.card-fly .dino-card-header { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); }
+.card-fly .dino-badge { background: var(--cordel-blue); color: white; }
+
+.card-croc { border-top: 5px solid var(--cordel-orange); }
+.card-croc .dino-card-header { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); }
+.card-croc .dino-badge { background: var(--cordel-orange); color: white; }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44,24,16,0.85);
+  z-index: 200;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 2rem;
+  -webkit-animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s;
+}
+.modal-overlay.show { display: -webkit-flex; display: flex; }
+@-webkit-keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.modal-content {
+  background: white;
+  border-radius: 24px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  -webkit-animation: slideUp 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+  animation: slideUp 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+@-webkit-keyframes slideUp { from{-webkit-transform:translateY(60px);opacity:0} to{-webkit-transform:translateY(0);opacity:1} }
+@keyframes slideUp { from{transform:translateY(60px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--cordel-red);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-content h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+.modal-content .modal-emoji {
+  font-size: 4rem;
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.modal-content .fact-list {
+  list-style: none;
+  padding: 0;
+}
+.modal-content .fact-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.modal-content .fact-list li .fact-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: var(--cordel-brown);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.tl-item {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  position: relative;
+  opacity: 1;
+  -webkit-animation: fadeInUp 0.6s ease both;
+  animation: fadeInUp 0.6s ease both;
+}
+.tl-item:nth-child(1) { -webkit-animation-delay: 0.1s; animation-delay: 0.1s; }
+.tl-item:nth-child(2) { -webkit-animation-delay: 0.2s; animation-delay: 0.2s; }
+.tl-item:nth-child(3) { -webkit-animation-delay: 0.3s; animation-delay: 0.3s; }
+.tl-item:nth-child(4) { -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
+.tl-item:nth-child(5) { -webkit-animation-delay: 0.5s; animation-delay: 0.5s; }
+.tl-item:nth-child(6) { -webkit-animation-delay: 0.6s; animation-delay: 0.6s; }
+.tl-item:nth-child(even) { flex-direction: row-reverse; }
+
+.tl-content {
+  width: 44%;
+  padding: 1rem 1.2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.tl-content:hover { transform: scale(1.03); }
+
+.tl-dot {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--cordel-yellow);
+  border: 4px solid var(--cordel-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.tl-content h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cordel-brown);
+}
+.tl-content .tl-date {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 0.8rem;
+  color: var(--cordel-red);
+  font-weight: 700;
+}
+.tl-content p {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* ===== COMO ERA O RN ===== */
+.landscape-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  transition: transform 0.3s;
+}
+.landscape-card:hover { transform: scale(1.02); }
+.landscape-card .icon {
+  font-size: 4rem;
+  text-align: center;
+}
+.landscape-card h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: var(--cordel-brown);
+}
+.landscape-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ===== QUIZ ===== */
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quiz-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  border-left: 6px solid var(--cordel-purple);
+}
+
+.quiz-card h4 {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 1.15rem;
+  color: var(--cordel-purple);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1.2rem;
+  margin: 0.4rem 0;
+  border: 2px solid #e0d5c7;
+  border-radius: 14px;
+  background: var(--cordel-cream);
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.quiz-option:hover {
+  border-color: var(--cordel-purple);
+  background: #f0e8ff;
+  transform: translateX(5px);
+}
+.quiz-option.correct {
+  border-color: var(--cordel-green);
+  background: #e8f5e9;
+  color: var(--cordel-green);
+  font-weight: 800;
+}
+.quiz-option.wrong {
+  border-color: var(--cordel-red);
+  background: #ffebee;
+  color: var(--cordel-red);
+  opacity: 0.7;
+}
+.quiz-option:disabled { cursor: default; transform: none; }
+
+.quiz-feedback {
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.right {
+  background: #e8f5e9;
+  color: var(--cordel-green);
+}
+.quiz-feedback.wrongfb {
+  background: #ffebee;
+  color: var(--cordel-red);
+}
+
+.score-board {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--cordel-purple), var(--cordel-blue));
+  border-radius: 20px;
+  color: white;
+  margin-top: 1.5rem;
+}
+.score-board .score-num {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.score-board .score-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ===== CURIOSITIES (FLASHCARDS) ===== */
+.curiosity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.flip-card {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  height: 220px;
+  cursor: pointer;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.flip-card-front {
+  background: linear-gradient(135deg, var(--cordel-yellow), var(--cordel-orange));
+  color: var(--cordel-dark);
+}
+.flip-card-front .flip-emoji {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.flip-card-front h4 {
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 1.1rem;
+}
+.flip-card-front .tap-text {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+.flip-card-back {
+  background: white;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.flip-card-back p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444;
+}
+.flip-card-back .back-emoji {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.compare-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+.compare-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.compare-table th {
+  background: var(--cordel-brown);
+  color: var(--cordel-yellow);
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  text-align: center;
+}
+.compare-table td {
+  padding: 0.7rem;
+  text-align: center;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: var(--cordel-cream); }
+.compare-table .dino-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ===== GALLERY FLIP CARDS ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+.gallery-card {
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
+  height: 440px;
+  cursor: pointer;
+}
+.gallery-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.175,0.885,0.32,1.275);
+  transition: transform 0.7s cubic-bezier(0.175,0.885,0.32,1.275);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.gallery-card.flipped .gallery-inner {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.gallery-front, .gallery-back {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.gallery-front {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.dino-svg {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.4s;
+}
+.gallery-card:hover .dino-svg,
+.gallery-card:active .dino-svg {
+  transform: scale(1.05);
+}
+.gallery-label {
+  color: white;
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: pulse 2s infinite;
+}
+.gallery-back {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  background: white;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.gallery-back-header {
+  padding: 1.2rem;
+  text-align: center;
+}
+.gallery-back-header h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.gallery-back-body {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gallery-info-row {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #e0d5c7;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  align-items: flex-start;
+}
+.gallery-info-row:last-of-type { border-bottom: none; }
+.gi-label {
+  font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+.gallery-tap-back {
+  text-align: center;
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+  animation: pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-card { height: 420px; }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cordel-dark);
+  color: var(--cordel-cream);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+}
+footer .footer-dinos {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5rem;
+}
+footer p { opacity: 0.7; line-height: 1.6; }
+footer .credits {
+  margin-top: 1rem;
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 1rem;
+  color: var(--cordel-yellow);
+}
+
+/* ===== PWA INSTALL BANNER ===== */
+.pwa-install-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: var(--cordel-dark);
+  color: var(--cordel-cream);
+  padding: 1rem 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  animation: slideUp 0.4s ease;
+}
+.pwa-install-banner.show { display: flex; }
+.pwa-install-banner .pwa-text {
+  flex: 1;
+  font-family: 'Trebuchet MS', 'Comic Sans MS', cursive;
+  font-size: 0.9rem;
+}
+.pwa-install-banner .pwa-text strong { color: var(--cordel-yellow); }
+.pwa-install-btn {
+  background: var(--cordel-yellow);
+  color: var(--cordel-dark);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.pwa-dismiss-btn {
+  background: transparent;
+  border: 1px solid var(--cordel-cream);
+  color: var(--cordel-cream);
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0.7;
+}
+/* standalone mode: hide browser-specific UI hints */
+@media (display-mode: standalone) {
+  .pwa-install-banner { display: none !important; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  html { font-size: 16px; }
+  .hero h1 { font-size: 2.2rem; }
+  .timeline::before { left: 24px; }
+  .tl-item, .tl-item:nth-child(even) { flex-direction: row; }
+  .tl-content { width: calc(100% - 70px); }
+  .tl-dot { margin: 0 0.5rem 0 0; }
+  .dino-grid { grid-template-columns: 1fr; }
+  .landscape-card { grid-template-columns: 70px 1fr; gap: 1rem; }
+  .landscape-card .icon { font-size: 2.5rem; }
+  nav button { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <button onclick="scrollTo_('#hero')" class="active">🏠 Início</button>
+  <button onclick="scrollTo_('#cordel')">📜 Cordel</button>
+  <button onclick="scrollTo_('#dinos')">🦕 Dinossauros</button>
+  <button onclick="scrollTo_('#timeline')">⏳ Linha do Tempo</button>
+  <button onclick="scrollTo_('#paisagem')">🌿 Como Era o RN</button>
+  <button onclick="scrollTo_('#compare')">📊 Compare</button>
+  <button onclick="scrollTo_('#galeria')">🖼️ Galeria</button>
+  <button onclick="scrollTo_('#curiosidades')">💡 Curiosidades</button>
+  <button onclick="scrollTo_('#quiz')">🧠 Quiz</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-dinos">
+    <span class="hero-dino-icon">🦕</span>
+    <span class="hero-dino-icon">🦖</span>
+    <span class="hero-dino-icon">🦅</span>
+  </div>
+  <h1>Dinossauros<br>Potiguares</h1>
+  <p class="subtitle">Um Cordel da Pré-História do Rio Grande do Norte</p>
+  <p class="tap-hint">👆 Toque para explorar!</p>
+  <div class="scroll-arrow" onclick="scrollTo_('#cordel')">⬇</div>
+</section>
+
+<!-- CORDEL -->
+<section id="cordel">
+  <div class="cordel-container">
+    <div class="cordel-title-block">
+      <h2>📜 O Cordel dos<br>Dinossauros Potiguares</h2>
+      <p class="author">Feira de Ciências — Os Gigantes que Pisaram no RN</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">1</span>
+      <span class="stanza-icon">🌍</span>
+      <p>Há cento e vinte milhões de anos,<br>
+      Neste chão que hoje é sertão,<br>
+      Viviam bichos gigantes<br>
+      Nesta terra de emoção —<br>
+      O Rio Grande do Norte<br>
+      Já tinha sua vocação!</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">2</span>
+      <span class="stanza-icon">🦕</span>
+      <p>O Saurópode pescoçudo<br>
+      Caminhava devagar,<br>
+      Com treze toneladas de peso<br>
+      Fazia o chão tremer no ar!<br>
+      Suas pegadas ficaram marcadas<br>
+      Pra história nos contar.</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">3</span>
+      <span class="stanza-icon">🐾</span>
+      <p>O Ornitópode andava<br>
+      Com patas feito de ave,<br>
+      Oito metros de comprido,<br>
+      Era um bicho muito grave!<br>
+      Comia folhas e mais folhas,<br>
+      Vivia uma vida suave.</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">4</span>
+      <span class="stanza-icon">🏜️</span>
+      <p>Lá na Fazenda dos Pingos,<br>
+      Bem pertinho de Assú,<br>
+      Na Formação Açu antiga,<br>
+      Que hoje é seco e nu —<br>
+      As pegadas foram achadas<br>
+      Pelo povo da UFRN, ôxe, uhu!</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">5</span>
+      <span class="stanza-icon">🦖</span>
+      <p>Na Chapada do Araripe,<br>
+      Vizinha do nosso chão,<br>
+      Vivia o Angaturama,<br>
+      Com focinho de tubarão —<br>
+      Comia peixe e voador,<br>
+      Era um bruto valentão!</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">6</span>
+      <span class="stanza-icon">🦅</span>
+      <p>Os Pterossauros voavam<br>
+      Nos céus do nosso Nordeste,<br>
+      Com asas de quase nove metros,<br>
+      Do sul ao norte, leste a oeste!<br>
+      Tupandactylus imperador,<br>
+      Tinha crista e era agreste!</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">7</span>
+      <span class="stanza-icon">🐊</span>
+      <p>O Araripesuchus pequenininho<br>
+      Era um jacaré do passado,<br>
+      Vivia nas lagoas rasas<br>
+      Do Nordeste encantado —<br>
+      Meio metro de tamanho,<br>
+      Mas era danado arretado!</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">8</span>
+      <span class="stanza-icon">🔬</span>
+      <p>A ciência desvendou<br>
+      O que a pedra guardou,<br>
+      E o Museu Câmara Cascudo<br>
+      Orgulhoso se mostrou —<br>
+      Pois nosso RN potiguar<br>
+      Terra de dino se provou!</p>
+    </div>
+
+    <div class="cordel-stanza">
+      <span class="stanza-num">9</span>
+      <span class="stanza-icon">📚</span>
+      <p>Então, crianças do futuro,<br>
+      Prestem muita atenção:<br>
+      Onde vocês pisam hoje<br>
+      Já foi terra de grandão!<br>
+      Os dinossauros do RN<br>
+      Vivem na imaginação!</p>
+    </div>
+  </div>
+</section>
+
+<!-- DINOSSAUROS -->
+<section id="dinos">
+  <h2 class="section-title"><span>🦕 Os Gigantes do Nordeste</span></h2>
+  <p class="section-subtitle">Toque em cada cartão para saber mais!</p>
+
+  <div class="dino-grid">
+
+    <div class="dino-card card-herb" onclick="openModal('sauropode')">
+      <div class="dino-card-header">
+        <span class="dino-emoji">🦕</span>
+        <h3>Saurópode Potiguar</h3>
+        <span class="sci-name">Pegadas na Bacia Potiguar</span>
+      </div>
+      <div class="dino-card-body">
+        <div class="dino-stats">
+          <div class="dino-stat"><div class="label">Altura</div><div class="value">9–12 m</div></div>
+          <div class="dino-stat"><div class="label">Peso</div><div class="value">13 ton</div></div>
+          <div class="dino-stat"><div class="label">Período</div><div class="value">Cretáceo</div></div>
+          <div class="dino-stat"><div class="label">Dieta</div><div class="value">🌿 Herbívoro</div></div>
+        </div>
+        <p class="desc">O famoso "pescoçudo"! Suas pegadas foram as primeiras encontradas no RN, perto de Assú.</p>
+        <span class="dino-badge">🌿 Herbívoro</span>
+      </div>
+    </div>
+
+    <div class="dino-card card-herb" onclick="openModal('ornitopode')">
+      <div class="dino-card-header">
+        <span class="dino-emoji">🐾</span>
+        <h3>Ornitópode Potiguar</h3>
+        <span class="sci-name">Pegadas na Bacia Potiguar</span>
+      </div>
+      <div class="dino-card-body">
+        <div class="dino-stats">
+          <div class="dino-stat"><div class="label">Comprimento</div><div class="value">~8 m</div></div>
+          <div class="dino-stat"><div class="label">Peso</div><div class="value">~4 ton</div></div>
+          <div class="dino-stat"><div class="label">Período</div><div class="value">Cretáceo</div></div>
+          <div class="dino-stat"><div class="label">Dieta</div><div class="value">🌿 Herbívoro</div></div>
+        </div>
+        <p class="desc">Tinha patas parecidas com as de aves. Andava em duas ou quatro patas e comia plantas.</p>
+        <span class="dino-badge">🌿 Herbívoro</span>
+      </div>
+    </div>
+
+    <div class="dino-card card-carn" onclick="openModal('angaturama')">
+      <div class="dino-card-header">
+        <span class="dino-emoji">🦖</span>
+        <h3>Angaturama</h3>
+        <span class="sci-name">Angaturama limai</span>
+      </div>
+      <div class="dino-card-body">
+        <div class="dino-stats">
+          <div class="dino-stat"><div class="label">Comprimento</div><div class="value">6–8 m</div></div>
+          <div class="dino-stat"><div class="label">Peso</div><div class="value">~500 kg</div></div>
+          <div class="dino-stat"><div class="label">Período</div><div class="value">Cretáceo</div></div>
+          <div class="dino-stat"><div class="label">Dieta</div><div class="value">🥩 Carnívoro</div></div>
+        </div>
+        <p class="desc">O "nobre" em tupi! Parente do Espinossauro, tinha focinho de crocodilo e comia peixes.</p>
+        <span class="dino-badge">🥩 Carnívoro</span>
+      </div>
+    </div>
+
+    <div class="dino-card card-fly" onclick="openModal('pterossauro')">
+      <div class="dino-card-header">
+        <span class="dino-emoji">🦅</span>
+        <h3>Tupandactylus</h3>
+        <span class="sci-name">Tupandactylus imperator</span>
+      </div>
+      <div class="dino-card-body">
+        <div class="dino-stats">
+          <div class="dino-stat"><div class="label">Envergadura</div><div class="value">~5 m</div></div>
+          <div class="dino-stat"><div class="label">Peso</div><div class="value">~25 kg</div></div>
+          <div class="dino-stat"><div class="label">Período</div><div class="value">Cretáceo</div></div>
+          <div class="dino-stat"><div class="label">Dieta</div><div class="value">🐟 Piscívoro</div></div>
+        </div>
+        <p class="desc">Réptil voador com enorme crista colorida na cabeça! Voava sobre o Nordeste há 115 milhões de anos.</p>
+        <span class="dino-badge">🐟 Voador</span>
+      </div>
+    </div>
+
+    <div class="dino-card card-carn" onclick="openModal('santanaraptor')">
+      <div class="dino-card-header">
+        <span class="dino-emoji">🏃</span>
+        <h3>Santanaraptor</h3>
+        <span class="sci-name">Santanaraptor placidus</span>
+      </div>
+      <div class="dino-card-body">
+        <div class="dino-stats">
+          <div class="dino-stat"><div class="label">Comprimento</div><div class="value">~1,5 m</div></div>
+          <div class="dino-stat"><div class="label">Peso</div><div class="value">~15 kg</div></div>
+          <div class="dino-stat"><div class="label">Período</div><div class="value">Cretáceo</div></div>
+          <div class="dino-stat"><div class="label">Dieta</div><div class="value">🥩 Carnívoro</div></div>
+        </div>
+        <p class="desc">Um pequeno caçador veloz! Preservou até restos de tecidos moles — algo raríssimo em fósseis!</p>
+        <span class="dino-badge">🥩 Carnívoro</span>
+      </div>
+    </div>
+
+    <div class="dino-card card-croc" onclick="openModal('araripesuchus')">
+      <div class="dino-card-header">
+        <span class="dino-emoji">🐊</span>
+        <h3>Araripesuchus</h3>
+        <span class="sci-name">Araripesuchus gomesii</span>
+      </div>
+      <div class="dino-card-body">
+        <div class="dino-stats">
+          <div class="dino-stat"><div class="label">Comprimento</div><div class="value">~0,5 m</div></div>
+          <div class="dino-stat"><div class="label">Peso</div><div class="value">~5 kg</div></div>
+          <div class="dino-stat"><div class="label">Período</div><div class="value">Cretáceo</div></div>
+          <div class="dino-stat"><div class="label">Dieta</div><div class="value">🐟 Onívoro</div></div>
+        </div>
+        <p class="desc">Um mini-jacaré pré-histórico! Vivia em lagoas do Nordeste quando América e África se separavam.</p>
+        <span class="dino-badge">🐟 Crocodilomorfo</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <h2 class="section-title"><span>⏳ Viagem no Tempo</span></h2>
+  <p class="section-subtitle">A história dos dinossauros do nosso Nordeste</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-content">
+        <span class="tl-date">~230 milhões de anos</span>
+        <h4>🌋 Surgem os Primeiros Dinossauros</h4>
+        <p>No Triássico, os primeiros dinossauros aparecem no sul do Brasil e Argentina. Eram pequenos e bípedes.</p>
+      </div>
+      <div class="tl-dot">🦎</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <span class="tl-date">~150 milhões de anos</span>
+        <h4>🌿 Jurássico: Era dos Gigantes</h4>
+        <p>Dinossauros dominam o planeta. Saurópodes gigantes e terópodes carnívoros prosperam.</p>
+      </div>
+      <div class="tl-dot">🦕</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <span class="tl-date">~120 milhões de anos</span>
+        <h4>🐾 Dinossauros Pisam no RN!</h4>
+        <p>Saurópodes e ornitópodes herbívoros vivem onde hoje é Assú/RN. Suas pegadas ficaram marcadas na Formação Açu.</p>
+      </div>
+      <div class="tl-dot">👣</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <span class="tl-date">~115–110 milhões de anos</span>
+        <h4>🦅 Céus do Nordeste</h4>
+        <p>Pterossauros como o Tupandactylus e dinossauros como o Angaturama vivem na Chapada do Araripe (CE/PE/PI).</p>
+      </div>
+      <div class="tl-dot">🦖</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <span class="tl-date">~66 milhões de anos</span>
+        <h4>☄️ A Grande Extinção</h4>
+        <p>Um asteroide gigante atinge a Terra. Os dinossauros não-voadores são extintos. Apenas as aves sobrevivem.</p>
+      </div>
+      <div class="tl-dot">💥</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <span class="tl-date">2021</span>
+        <h4>🔬 Descoberta no RN!</h4>
+        <p>Pesquisadores da UFRN, UERJ e Instituto Cavanis publicam o primeiro registro de pegadas de dinossauros no RN!</p>
+      </div>
+      <div class="tl-dot">🎉</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO ERA O RN -->
+<section id="paisagem">
+  <h2 class="section-title"><span>🌿 Como Era o RN há 120 Milhões de Anos?</span></h2>
+  <p class="section-subtitle">O sertão de hoje já foi bem diferente!</p>
+
+  <div class="landscape-card">
+    <div class="icon">🌊</div>
+    <div><h4>Muito Mais Água!</h4><p>Onde hoje é seco e quente, havia rios largos, lagoas e até o início de um oceano se formando. A América do Sul e a África estavam se separando, criando um mar raso entre elas!</p></div>
+  </div>
+  <div class="landscape-card">
+    <div class="icon">🌴</div>
+    <div><h4>Florestas Tropicais</h4><p>Ao invés de caatinga, havia uma vegetação exuberante: samambaias gigantes, coníferas, e as primeiras plantas com flores estavam surgindo. Era como uma floresta tropical!</p></div>
+  </div>
+  <div class="landscape-card">
+    <div class="icon">🌡️</div>
+    <div><h4>Clima Quente e Úmido</h4><p>O clima era mais quente e chuvoso. Não existiam as estações secas longas do semiárido. Chovia bastante e os rios nunca secavam completamente.</p></div>
+  </div>
+  <div class="landscape-card">
+    <div class="icon">🦎</div>
+    <div><h4>Vida por Todo Lado</h4><p>Além dos dinossauros, havia peixes de muitas espécies, tartarugas, crocodilos, insetos gigantes, pterossauros voando nos céus e os primeiros mamíferos (bem pequeninos!).</p></div>
+  </div>
+  <div class="landscape-card">
+    <div class="icon">🗺️</div>
+    <div><h4>Um Mapa Diferente</h4><p>O Brasil e a África estavam coladinhos! Os dinossauros podiam caminhar de um continente ao outro. Por isso encontramos fósseis parecidos nos dois continentes.</p></div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="compare">
+  <h2 class="section-title"><span>📊 Comparando os Dinos</span></h2>
+  <p class="section-subtitle">Deslize para ver a tabela completa →</p>
+
+  <div class="compare-scroll">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nome</th>
+          <th>Tamanho</th>
+          <th>Peso</th>
+          <th>Dieta</th>
+          <th>Onde vivia</th>
+          <th>Quando</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🦕</td>
+          <td class="dino-name">Saurópode</td>
+          <td>9–12 m</td>
+          <td>13 ton</td>
+          <td>🌿 Herbívoro</td>
+          <td>Assú, RN</td>
+          <td>120 M.a.</td>
+        </tr>
+        <tr>
+          <td>🐾</td>
+          <td class="dino-name">Ornitópode</td>
+          <td>~8 m</td>
+          <td>4 ton</td>
+          <td>🌿 Herbívoro</td>
+          <td>Assú, RN</td>
+          <td>120 M.a.</td>
+        </tr>
+        <tr>
+          <td>🦖</td>
+          <td class="dino-name">Angaturama</td>
+          <td>6–8 m</td>
+          <td>500 kg</td>
+          <td>🥩🐟 Carnívoro</td>
+          <td>Chapada Araripe, CE</td>
+          <td>110 M.a.</td>
+        </tr>
+        <tr>
+          <td>🦅</td>
+          <td class="dino-name">Tupandactylus</td>
+          <td>5 m (asas)</td>
+          <td>25 kg</td>
+          <td>🐟 Piscívoro</td>
+          <td>Chapada Araripe, CE</td>
+          <td>115 M.a.</td>
+        </tr>
+        <tr>
+          <td>🏃</td>
+          <td class="dino-name">Santanaraptor</td>
+          <td>~1,5 m</td>
+          <td>15 kg</td>
+          <td>🥩 Carnívoro</td>
+          <td>Chapada Araripe, CE</td>
+          <td>110 M.a.</td>
+        </tr>
+        <tr>
+          <td>🐊</td>
+          <td class="dino-name">Araripesuchus</td>
+          <td>~0,5 m</td>
+          <td>5 kg</td>
+          <td>🐟 Onívoro</td>
+          <td>Chapada Araripe, CE</td>
+          <td>110 M.a.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- GALERIA DE ILUSTRAÇÕES -->
+<section id="galeria">
+  <h2 class="section-title"><span>🖼️ Galeria dos Dinossauros</span></h2>
+  <p class="section-subtitle">Toque em cada ilustração para conhecer o dinossauro!</p>
+
+  <div class="gallery-grid">
+
+    <!-- SAURÓPODE -->
+    <div class="gallery-card" onclick="this.classList.toggle('flipped')">
+      <div class="gallery-inner">
+        <div class="gallery-front" style="background: linear-gradient(160deg, #a8e6cf 0%, #55a775 50%, #2d6a4f 100%)">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="dino-svg">
+            <!-- ground -->
+            <ellipse cx="200" cy="270" rx="180" ry="18" fill="#1b4332" opacity="0.3"/>
+            <!-- tail -->
+            <path d="M60 180 Q30 170 10 140 Q5 130 15 135 Q35 145 65 155" fill="#5a8a5e" stroke="#3d6b41" stroke-width="2"/>
+            <!-- body -->
+            <ellipse cx="140" cy="180" rx="80" ry="50" fill="#6aaa6e" stroke="#4a8a4e" stroke-width="2"/>
+            <!-- belly -->
+            <ellipse cx="140" cy="195" rx="60" ry="30" fill="#8cc68e" opacity="0.6"/>
+            <!-- back leg far -->
+            <path d="M110 220 L105 265 L115 268 L120 225" fill="#4a8a4e" stroke="#3d6b41" stroke-width="2"/>
+            <!-- front leg far -->
+            <path d="M175 215 L172 260 L182 263 L185 218" fill="#4a8a4e" stroke="#3d6b41" stroke-width="2"/>
+            <!-- back leg near -->
+            <path d="M125 225 L120 268 L132 270 L135 228" fill="#5a9a5e" stroke="#3d6b41" stroke-width="2"/>
+            <!-- front leg near -->
+            <path d="M165 218 L162 262 L174 265 L175 220" fill="#5a9a5e" stroke="#3d6b41" stroke-width="2"/>
+            <!-- feet -->
+            <ellipse cx="126" cy="270" rx="10" ry="5" fill="#3d6b41"/>
+            <ellipse cx="168" cy="264" rx="10" ry="5" fill="#3d6b41"/>
+            <!-- neck -->
+            <path d="M200 170 Q230 130 260 90 Q275 70 285 55" fill="#6aaa6e" stroke="#4a8a4e" stroke-width="2.5"/>
+            <path d="M195 180 Q225 145 255 105 Q268 88 278 72" fill="#8cc68e" stroke="none"/>
+            <!-- head -->
+            <ellipse cx="295" cy="48" rx="28" ry="18" fill="#6aaa6e" stroke="#4a8a4e" stroke-width="2" transform="rotate(-15 295 48)"/>
+            <!-- eye -->
+            <circle cx="305" cy="42" r="5" fill="white"/>
+            <circle cx="307" cy="41" r="3" fill="#1b4332"/>
+            <circle cx="308" cy="40" r="1" fill="white"/>
+            <!-- mouth -->
+            <path d="M315 52 Q320 55 318 50" fill="none" stroke="#3d6b41" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- smile -->
+            <path d="M310 53 Q315 58 320 54" fill="none" stroke="#3d6b41" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- nostril -->
+            <circle cx="316" cy="46" r="1.5" fill="#3d6b41"/>
+            <!-- spots on body -->
+            <circle cx="110" cy="170" r="6" fill="#7dba80" opacity="0.5"/>
+            <circle cx="145" cy="160" r="8" fill="#7dba80" opacity="0.5"/>
+            <circle cx="170" cy="175" r="5" fill="#7dba80" opacity="0.5"/>
+            <circle cx="130" cy="190" r="4" fill="#7dba80" opacity="0.4"/>
+            <!-- plants -->
+            <path d="M330 270 L335 240 L340 250 L345 230 L350 245 L355 225 L360 270" fill="#2d6a4f" opacity="0.4"/>
+            <path d="M40 270 L45 245 L50 255 L55 235 L60 250 L65 270" fill="#2d6a4f" opacity="0.4"/>
+          </svg>
+          <div class="gallery-label">👆 Toque para saber mais!</div>
+        </div>
+        <div class="gallery-back">
+          <div class="gallery-back-header" style="background: var(--cordel-green)">
+            <h3>🦕 Saurópode Potiguar</h3>
+          </div>
+          <div class="gallery-back-body">
+            <div class="gallery-info-row"><span class="gi-label">📍 Onde:</span><span>Assú, RN — Fazenda dos Pingos</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📏 Tamanho:</span><span>9 a 12 metros de altura</span></div>
+            <div class="gallery-info-row"><span class="gi-label">⚖️ Peso:</span><span>Até 13 toneladas (3 elefantes!)</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🍽️ Dieta:</span><span>Herbívoro — comia folhas de árvores</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📅 Quando:</span><span>~120 milhões de anos atrás</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🌟 Curiosidade:</span><span>O "pescoçudo"! Suas pegadas são a 1ª prova de dinossauros no RN!</span></div>
+            <p class="gallery-tap-back">👆 Toque para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORNITÓPODE -->
+    <div class="gallery-card" onclick="this.classList.toggle('flipped')">
+      <div class="gallery-inner">
+        <div class="gallery-front" style="background: linear-gradient(160deg, #c8e6c9 0%, #66bb6a 50%, #388e3c 100%)">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="dino-svg">
+            <ellipse cx="200" cy="272" rx="170" ry="16" fill="#1b5e20" opacity="0.25"/>
+            <!-- tail -->
+            <path d="M80 155 Q40 140 15 160 Q10 165 20 160 Q50 148 85 158" fill="#7cb342" stroke="#558b2f" stroke-width="2"/>
+            <path d="M60 150 Q30 135 8 150" fill="none" stroke="#558b2f" stroke-width="1.5"/>
+            <!-- body -->
+            <ellipse cx="160" cy="165" rx="75" ry="42" fill="#8bc34a" stroke="#689f38" stroke-width="2" transform="rotate(-5 160 165)"/>
+            <ellipse cx="160" cy="178" rx="55" ry="25" fill="#aed581" opacity="0.5"/>
+            <!-- back leg -->
+            <path d="M130 200 L120 245 Q118 255 125 255 L140 256 Q145 256 142 250 L138 205" fill="#7cb342" stroke="#558b2f" stroke-width="2"/>
+            <!-- toes back -->
+            <path d="M125 255 L115 262" stroke="#558b2f" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M130 256 L128 265" stroke="#558b2f" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M137 256 L140 264" stroke="#558b2f" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- front leg -->
+            <path d="M190 198 L195 242 Q196 252 200 252 L212 253 Q216 253 214 248 L205 200" fill="#7cb342" stroke="#558b2f" stroke-width="2"/>
+            <!-- toes front -->
+            <path d="M200 252 L192 260" stroke="#558b2f" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M205 253 L204 262" stroke="#558b2f" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M211 253 L216 260" stroke="#558b2f" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- arms -->
+            <path d="M210 155 Q225 165 230 180 Q232 185 228 183 Q222 170 212 162" fill="#8bc34a" stroke="#558b2f" stroke-width="1.5"/>
+            <!-- neck -->
+            <path d="M220 150 Q245 125 260 105 Q270 90 278 80" fill="#8bc34a" stroke="#689f38" stroke-width="2"/>
+            <path d="M215 155 Q240 135 255 115 Q264 102 272 92" fill="#aed581" stroke="none"/>
+            <!-- head -->
+            <path d="M265 75 Q275 55 305 55 Q325 55 330 70 Q332 78 325 82 Q310 90 290 88 Q275 87 268 80 Z" fill="#8bc34a" stroke="#689f38" stroke-width="2"/>
+            <!-- beak-like mouth -->
+            <path d="M325 70 Q340 68 340 75 Q340 80 325 82" fill="#d4e157" stroke="#689f38" stroke-width="1.5"/>
+            <!-- eye -->
+            <circle cx="300" cy="68" r="6" fill="white"/>
+            <circle cx="302" cy="67" r="3.5" fill="#1b5e20"/>
+            <circle cx="303" cy="66" r="1.2" fill="white"/>
+            <!-- crest ridge -->
+            <path d="M280 62 Q285 50 295 52 Q300 53 298 60" fill="#689f38" stroke="#558b2f" stroke-width="1.5"/>
+            <!-- stripes -->
+            <path d="M110 155 Q120 148 130 155" fill="none" stroke="#689f38" stroke-width="2" opacity="0.4"/>
+            <path d="M140 150 Q150 143 160 150" fill="none" stroke="#689f38" stroke-width="2" opacity="0.4"/>
+            <path d="M165 148 Q175 141 185 148" fill="none" stroke="#689f38" stroke-width="2" opacity="0.4"/>
+            <!-- plants -->
+            <path d="M340 272 Q345 250 350 260 Q355 240 360 255 L365 272" fill="#388e3c" opacity="0.3"/>
+            <path d="M30 272 Q35 255 40 262 Q45 245 50 258 L55 272" fill="#388e3c" opacity="0.3"/>
+          </svg>
+          <div class="gallery-label">👆 Toque para saber mais!</div>
+        </div>
+        <div class="gallery-back">
+          <div class="gallery-back-header" style="background: #558b2f">
+            <h3>🐾 Ornitópode Potiguar</h3>
+          </div>
+          <div class="gallery-back-body">
+            <div class="gallery-info-row"><span class="gi-label">📍 Onde:</span><span>Assú, RN — Formação Açu</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📏 Tamanho:</span><span>~8 metros de comprimento</span></div>
+            <div class="gallery-info-row"><span class="gi-label">⚖️ Peso:</span><span>Cerca de 4 toneladas</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🍽️ Dieta:</span><span>Herbívoro — comia folhas e plantas</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📅 Quando:</span><span>~120 milhões de anos atrás</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🌟 Curiosidade:</span><span>"Ornitópode" = pé de ave! Tinha patas parecidas com pássaros e podia andar em 2 ou 4 patas!</span></div>
+            <p class="gallery-tap-back">👆 Toque para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANGATURAMA -->
+    <div class="gallery-card" onclick="this.classList.toggle('flipped')">
+      <div class="gallery-inner">
+        <div class="gallery-front" style="background: linear-gradient(160deg, #ffcdd2 0%, #e53935 50%, #b71c1c 100%)">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="dino-svg">
+            <ellipse cx="200" cy="272" rx="170" ry="16" fill="#7f0000" opacity="0.2"/>
+            <!-- tail -->
+            <path d="M55 170 Q20 155 5 175 Q2 180 10 175 Q30 162 58 168" fill="#c62828" stroke="#8e0000" stroke-width="2"/>
+            <!-- sail/spine ridge -->
+            <path d="M100 125 Q120 80 150 70 Q180 62 200 75 Q210 80 205 130" fill="#ff5252" stroke="#c62828" stroke-width="2" opacity="0.8"/>
+            <path d="M120 110 L125 85" stroke="#e53935" stroke-width="1" opacity="0.5"/>
+            <path d="M140 100 L143 78" stroke="#e53935" stroke-width="1" opacity="0.5"/>
+            <path d="M160 95 L162 74" stroke="#e53935" stroke-width="1" opacity="0.5"/>
+            <path d="M180 98 L180 78" stroke="#e53935" stroke-width="1" opacity="0.5"/>
+            <!-- body -->
+            <ellipse cx="150" cy="170" rx="75" ry="40" fill="#d32f2f" stroke="#b71c1c" stroke-width="2"/>
+            <ellipse cx="150" cy="182" rx="55" ry="22" fill="#ef5350" opacity="0.4"/>
+            <!-- back leg -->
+            <path d="M115 200 L108 250 Q106 260 115 258 L125 255 Q130 254 128 248 L125 205" fill="#c62828" stroke="#8e0000" stroke-width="2"/>
+            <!-- claws back -->
+            <path d="M112 258 L105 265" stroke="#8e0000" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M118 258 L117 266" stroke="#8e0000" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M124 256 L128 263" stroke="#8e0000" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- front leg -->
+            <path d="M185 195 L190 248 Q191 256 197 254 L205 250 Q210 248 207 244 L198 198" fill="#c62828" stroke="#8e0000" stroke-width="2"/>
+            <!-- claws front -->
+            <path d="M195 254 L190 262" stroke="#8e0000" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M200 253 L200 262" stroke="#8e0000" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M205 251 L210 258" stroke="#8e0000" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- arms with claws -->
+            <path d="M215 155 Q235 165 242 175" fill="none" stroke="#c62828" stroke-width="3"/>
+            <path d="M242 175 L248 172" stroke="#8e0000" stroke-width="2" stroke-linecap="round"/>
+            <path d="M242 175 L246 180" stroke="#8e0000" stroke-width="2" stroke-linecap="round"/>
+            <!-- neck -->
+            <path d="M215 155 Q240 140 265 120 Q280 108 295 95" fill="#d32f2f" stroke="#b71c1c" stroke-width="2.5"/>
+            <!-- LONG crocodile head -->
+            <path d="M290 90 Q295 72 315 65 Q340 58 370 62 Q385 65 388 72 Q390 80 380 85 Q355 95 320 95 Q300 95 293 90 Z" fill="#d32f2f" stroke="#b71c1c" stroke-width="2"/>
+            <!-- crest on snout -->
+            <path d="M310 65 Q315 50 325 48 Q335 47 335 58 Q334 62 330 64" fill="#ff5252" stroke="#c62828" stroke-width="1.5"/>
+            <!-- jaw line -->
+            <path d="M300 90 Q340 95 380 85" fill="none" stroke="#b71c1c" stroke-width="1.5"/>
+            <!-- teeth -->
+            <path d="M350 82 L348 88" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M360 80 L358 86" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M370 78 L369 83" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M340 84 L338 90" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <!-- eye -->
+            <circle cx="305" cy="75" r="6" fill="#ffeb3b"/>
+            <circle cx="307" cy="74" r="3" fill="#1a1a1a"/>
+            <circle cx="308" cy="73" r="1" fill="white"/>
+            <!-- nostril -->
+            <circle cx="315" cy="70" r="2" fill="#8e0000"/>
+            <!-- water splash near foot -->
+            <path d="M170 270 Q175 262 180 270 Q185 262 190 270" fill="none" stroke="#64b5f6" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+          <div class="gallery-label">👆 Toque para saber mais!</div>
+        </div>
+        <div class="gallery-back">
+          <div class="gallery-back-header" style="background: var(--cordel-red)">
+            <h3>🦖 Angaturama limai</h3>
+          </div>
+          <div class="gallery-back-body">
+            <div class="gallery-info-row"><span class="gi-label">📍 Onde:</span><span>Chapada do Araripe, Ceará</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📏 Tamanho:</span><span>6 a 8 metros de comprimento</span></div>
+            <div class="gallery-info-row"><span class="gi-label">⚖️ Peso:</span><span>Cerca de 500 kg</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🍽️ Dieta:</span><span>Carnívoro — caçava peixes e pterossauros!</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📅 Quando:</span><span>~110 milhões de anos atrás</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🌟 Curiosidade:</span><span>"Angaturama" = nobre em tupi! Tinha focinho de crocodilo, crista no nariz e é parente do Espinossauro africano!</span></div>
+            <p class="gallery-tap-back">👆 Toque para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TUPANDACTYLUS -->
+    <div class="gallery-card" onclick="this.classList.toggle('flipped')">
+      <div class="gallery-inner">
+        <div class="gallery-front" style="background: linear-gradient(160deg, #bbdefb 0%, #42a5f5 50%, #1565c0 100%)">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="dino-svg">
+            <!-- clouds -->
+            <ellipse cx="60" cy="50" rx="35" ry="15" fill="white" opacity="0.3"/>
+            <ellipse cx="340" cy="80" rx="30" ry="12" fill="white" opacity="0.25"/>
+            <!-- wing membrane far -->
+            <path d="M120 145 Q80 180 50 230 Q45 240 70 235 Q120 220 160 185 Z" fill="#1976d2" stroke="#0d47a1" stroke-width="1.5" opacity="0.6"/>
+            <!-- body -->
+            <ellipse cx="185" cy="155" rx="45" ry="28" fill="#2196f3" stroke="#1565c0" stroke-width="2"/>
+            <ellipse cx="185" cy="162" rx="30" ry="16" fill="#64b5f6" opacity="0.5"/>
+            <!-- wing membrane near -->
+            <path d="M160 140 Q130 100 80 60 Q65 48 75 58 Q105 80 135 115 Q150 132 160 143" fill="#1e88e5" stroke="#1565c0" stroke-width="1.5"/>
+            <path d="M210 145 Q260 180 320 230 Q335 242 325 238 Q275 215 225 175 Q212 162 210 150" fill="#1e88e5" stroke="#1565c0" stroke-width="1.5"/>
+            <!-- wing fingers -->
+            <path d="M80 60 L75 50" stroke="#1565c0" stroke-width="2" stroke-linecap="round"/>
+            <path d="M320 230 L330 240" stroke="#1565c0" stroke-width="2" stroke-linecap="round"/>
+            <!-- legs (dangling) -->
+            <path d="M175 180 L170 210 L165 215" fill="none" stroke="#1565c0" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M195 180 L198 208 L202 213" fill="none" stroke="#1565c0" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- neck -->
+            <path d="M220 140 Q245 120 260 105" fill="#2196f3" stroke="#1565c0" stroke-width="2.5"/>
+            <!-- head -->
+            <path d="M255 100 Q260 85 280 80 Q300 77 315 82 Q325 87 320 92 Q305 100 280 100 Q262 100 258 98 Z" fill="#2196f3" stroke="#1565c0" stroke-width="2"/>
+            <!-- HUGE CREST -->
+            <path d="M270 82 Q265 30 285 10 Q305 -5 320 15 Q330 30 325 55 Q322 70 315 82" fill="#ff7043" stroke="#e64a19" stroke-width="2"/>
+            <path d="M280 75 Q278 40 290 20 Q300 8 310 25 Q318 40 315 65" fill="#ff8a65" stroke="none" opacity="0.5"/>
+            <!-- crest pattern -->
+            <path d="M285 60 Q290 40 300 30" fill="none" stroke="#e64a19" stroke-width="1" opacity="0.4"/>
+            <path d="M290 65 Q295 45 305 35" fill="none" stroke="#e64a19" stroke-width="1" opacity="0.4"/>
+            <!-- beak -->
+            <path d="M315 82 Q330 80 330 87 Q328 92 320 92" fill="#ffb74d" stroke="#e65100" stroke-width="1.5"/>
+            <!-- eye -->
+            <circle cx="290" cy="88" r="5" fill="white"/>
+            <circle cx="292" cy="87" r="3" fill="#0d47a1"/>
+            <circle cx="293" cy="86" r="1" fill="white"/>
+            <!-- wing membrane veins -->
+            <path d="M140 120 L110 95" stroke="#1565c0" stroke-width="0.8" opacity="0.3"/>
+            <path d="M150 135 L125 110" stroke="#1565c0" stroke-width="0.8" opacity="0.3"/>
+            <path d="M230 160 L270 195" stroke="#1565c0" stroke-width="0.8" opacity="0.3"/>
+            <path d="M240 155 L285 190" stroke="#1565c0" stroke-width="0.8" opacity="0.3"/>
+            <!-- sun rays -->
+            <circle cx="50" cy="30" r="2" fill="#fff176" opacity="0.6"/>
+            <circle cx="350" cy="40" r="2" fill="#fff176" opacity="0.6"/>
+          </svg>
+          <div class="gallery-label">👆 Toque para saber mais!</div>
+        </div>
+        <div class="gallery-back">
+          <div class="gallery-back-header" style="background: var(--cordel-blue)">
+            <h3>🦅 Tupandactylus imperator</h3>
+          </div>
+          <div class="gallery-back-body">
+            <div class="gallery-info-row"><span class="gi-label">📍 Onde:</span><span>Chapada do Araripe (CE/PE/PI)</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📏 Envergadura:</span><span>Até 5 metros de asa a asa!</span></div>
+            <div class="gallery-info-row"><span class="gi-label">⚖️ Peso:</span><span>Cerca de 25 kg</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🍽️ Dieta:</span><span>Piscívoro — comia peixes do mar raso</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📅 Quando:</span><span>~115 milhões de anos atrás</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🌟 Curiosidade:</span><span>NÃO era dinossauro! Era um réptil voador com crista gigante e colorida — possivelmente coberta de penas!</span></div>
+            <p class="gallery-tap-back">👆 Toque para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SANTANARAPTOR -->
+    <div class="gallery-card" onclick="this.classList.toggle('flipped')">
+      <div class="gallery-inner">
+        <div class="gallery-front" style="background: linear-gradient(160deg, #fff9c4 0%, #ff8f00 50%, #e65100 100%)">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="dino-svg">
+            <ellipse cx="200" cy="272" rx="160" ry="14" fill="#bf360c" opacity="0.2"/>
+            <!-- tail (long, thin, held straight) -->
+            <path d="M90 145 Q50 138 20 150 Q10 155 15 150 Q40 138 55 140 L90 145" fill="#ef6c00" stroke="#e65100" stroke-width="1.5"/>
+            <path d="M55 140 Q30 130 10 140" fill="none" stroke="#e65100" stroke-width="1.5"/>
+            <!-- body (small, agile) -->
+            <ellipse cx="155" cy="148" rx="55" ry="28" fill="#fb8c00" stroke="#ef6c00" stroke-width="2" transform="rotate(-8 155 148)"/>
+            <ellipse cx="155" cy="157" rx="38" ry="16" fill="#ffa726" opacity="0.5"/>
+            <!-- leg back -->
+            <path d="M128 170 L118 225 Q115 235 122 235 L130 235 Q135 235 133 228 L132 175" fill="#ef6c00" stroke="#e65100" stroke-width="2"/>
+            <!-- lower leg detail -->
+            <path d="M120 210 L118 225" stroke="#e65100" stroke-width="2"/>
+            <!-- claws back -->
+            <path d="M120 235 L113 242" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M125 235 L124 244" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M131 235 L136 241" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- sickle claw! -->
+            <path d="M113 242 Q108 248 112 250" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- leg front -->
+            <path d="M175 168 L178 222 Q179 230 184 230 L192 230 Q196 230 194 224 L188 172" fill="#ef6c00" stroke="#e65100" stroke-width="2"/>
+            <path d="M183 230 L177 238" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M188 230 L187 239" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M193 230 L198 237" stroke="#bf360c" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- arms (small, grasping) -->
+            <path d="M200 138 Q215 148 220 155" fill="none" stroke="#ef6c00" stroke-width="2.5"/>
+            <path d="M220 155 L225 152" stroke="#bf360c" stroke-width="2" stroke-linecap="round"/>
+            <path d="M220 155 L223 160" stroke="#bf360c" stroke-width="2" stroke-linecap="round"/>
+            <!-- neck (thin) -->
+            <path d="M195 135 Q220 115 240 100 Q255 88 265 78" fill="#fb8c00" stroke="#ef6c00" stroke-width="2"/>
+            <!-- head (small, sleek) -->
+            <path d="M260 75 Q265 60 285 58 Q310 56 320 65 Q325 72 318 78 Q300 85 280 83 Q265 82 262 78 Z" fill="#fb8c00" stroke="#ef6c00" stroke-width="2"/>
+            <!-- jaw -->
+            <path d="M268 80 Q295 86 318 78" fill="none" stroke="#e65100" stroke-width="1.5"/>
+            <!-- teeth (small, sharp) -->
+            <path d="M300 75 L299 80" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M308 73 L307 78" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M314 70 L314 75" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- eye (large, intelligent) -->
+            <circle cx="280" cy="68" r="6" fill="#fff9c4"/>
+            <circle cx="282" cy="67" r="3.5" fill="#1a1a1a"/>
+            <circle cx="283" cy="66" r="1.2" fill="white"/>
+            <!-- feathery texture hints -->
+            <path d="M110 140 L105 135" stroke="#e65100" stroke-width="1" opacity="0.4"/>
+            <path d="M120 138 L115 132" stroke="#e65100" stroke-width="1" opacity="0.4"/>
+            <path d="M130 136 L126 130" stroke="#e65100" stroke-width="1" opacity="0.4"/>
+            <!-- speed lines -->
+            <path d="M40 160 L60 158" stroke="#bf360c" stroke-width="1" opacity="0.3"/>
+            <path d="M35 170 L55 168" stroke="#bf360c" stroke-width="1" opacity="0.3"/>
+            <path d="M45 180 L60 178" stroke="#bf360c" stroke-width="1" opacity="0.3"/>
+          </svg>
+          <div class="gallery-label">👆 Toque para saber mais!</div>
+        </div>
+        <div class="gallery-back">
+          <div class="gallery-back-header" style="background: #e65100">
+            <h3>🏃 Santanaraptor placidus</h3>
+          </div>
+          <div class="gallery-back-body">
+            <div class="gallery-info-row"><span class="gi-label">📍 Onde:</span><span>Chapada do Araripe, Ceará</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📏 Tamanho:</span><span>~1,5 metro (tamanho de criança)</span></div>
+            <div class="gallery-info-row"><span class="gi-label">⚖️ Peso:</span><span>Cerca de 15 kg</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🍽️ Dieta:</span><span>Carnívoro — caçava insetos e lagartos</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📅 Quando:</span><span>~110 milhões de anos atrás</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🌟 Curiosidade:</span><span>Preservou restos de pele e vasos sanguíneos fossilizados — raríssimo! É parente das aves modernas!</span></div>
+            <p class="gallery-tap-back">👆 Toque para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARARIPESUCHUS -->
+    <div class="gallery-card" onclick="this.classList.toggle('flipped')">
+      <div class="gallery-inner">
+        <div class="gallery-front" style="background: linear-gradient(160deg, #fff3e0 0%, #a1887f 50%, #5d4037 100%)">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="dino-svg">
+            <!-- water -->
+            <path d="M0 240 Q50 235 100 240 Q150 245 200 240 Q250 235 300 240 Q350 245 400 240 L400 300 L0 300 Z" fill="#4fc3f7" opacity="0.3"/>
+            <path d="M0 255 Q60 250 120 255 Q180 260 240 255 Q300 250 360 255 Q380 257 400 255 L400 300 L0 300 Z" fill="#29b6f6" opacity="0.2"/>
+            <!-- ripples -->
+            <path d="M150 248 Q160 244 170 248" fill="none" stroke="#0288d1" stroke-width="1" opacity="0.4"/>
+            <path d="M230 252 Q240 248 250 252" fill="none" stroke="#0288d1" stroke-width="1" opacity="0.4"/>
+            <!-- tail -->
+            <path d="M80 195 Q40 190 15 205 Q8 210 15 207 Q45 195 80 198" fill="#8d6e63" stroke="#5d4037" stroke-width="2"/>
+            <!-- tail ridges -->
+            <path d="M45 197 L43 190" stroke="#5d4037" stroke-width="1.5" opacity="0.5"/>
+            <path d="M55 196 L54 189" stroke="#5d4037" stroke-width="1.5" opacity="0.5"/>
+            <path d="M65 196 L64 189" stroke="#5d4037" stroke-width="1.5" opacity="0.5"/>
+            <!-- body -->
+            <ellipse cx="155" cy="200" rx="65" ry="25" fill="#8d6e63" stroke="#6d4c41" stroke-width="2"/>
+            <ellipse cx="155" cy="210" rx="50" ry="14" fill="#a1887f" opacity="0.5"/>
+            <!-- armor scutes on back -->
+            <rect x="108" y="178" width="10" height="8" rx="2" fill="#6d4c41" stroke="#4e342e" stroke-width="1" transform="rotate(-5 113 182)"/>
+            <rect x="122" y="176" width="10" height="8" rx="2" fill="#6d4c41" stroke="#4e342e" stroke-width="1"/>
+            <rect x="136" y="175" width="10" height="8" rx="2" fill="#6d4c41" stroke="#4e342e" stroke-width="1"/>
+            <rect x="150" y="176" width="10" height="8" rx="2" fill="#6d4c41" stroke="#4e342e" stroke-width="1"/>
+            <rect x="164" y="177" width="10" height="8" rx="2" fill="#6d4c41" stroke="#4e342e" stroke-width="1"/>
+            <rect x="178" y="179" width="10" height="8" rx="2" fill="#6d4c41" stroke="#4e342e" stroke-width="1" transform="rotate(5 183 183)"/>
+            <!-- legs -->
+            <path d="M120 218 L115 240 L125 242 L128 220" fill="#795548" stroke="#5d4037" stroke-width="1.5"/>
+            <path d="M185 216 L188 238 L198 240 L196 218" fill="#795548" stroke="#5d4037" stroke-width="1.5"/>
+            <!-- small feet -->
+            <ellipse cx="120" cy="242" rx="8" ry="4" fill="#5d4037"/>
+            <ellipse cx="193" cy="240" rx="8" ry="4" fill="#5d4037"/>
+            <!-- neck -->
+            <path d="M210 192 Q240 180 260 172 Q275 165 285 160" fill="#8d6e63" stroke="#6d4c41" stroke-width="2"/>
+            <!-- head (snout, flat, crocodilian) -->
+            <path d="M280 158 Q285 145 310 140 Q340 137 365 142 Q378 145 378 152 Q378 160 365 163 Q340 168 310 165 Q290 164 283 160 Z" fill="#8d6e63" stroke="#6d4c41" stroke-width="2"/>
+            <!-- jaw separate -->
+            <path d="M290 162 Q330 170 365 163" fill="none" stroke="#5d4037" stroke-width="2"/>
+            <!-- teeth (small) -->
+            <path d="M330 156 L329 161" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M345 155 L344 160" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M358 154 L357 159" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- eye -->
+            <circle cx="300" cy="148" r="5" fill="#fff9c4"/>
+            <circle cx="302" cy="147" r="3" fill="#3e2723"/>
+            <circle cx="303" cy="146" r="1" fill="white"/>
+            <!-- nostril -->
+            <circle cx="368" cy="147" r="2" fill="#4e342e"/>
+            <!-- cute smile -->
+            <path d="M350 158 Q358 162 365 158" fill="none" stroke="#4e342e" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- lily pad -->
+            <ellipse cx="300" cy="260" rx="18" ry="8" fill="#66bb6a" opacity="0.5"/>
+            <path d="M300 260 L300 252" stroke="#66bb6a" stroke-width="1" opacity="0.5"/>
+          </svg>
+          <div class="gallery-label">👆 Toque para saber mais!</div>
+        </div>
+        <div class="gallery-back">
+          <div class="gallery-back-header" style="background: #5d4037">
+            <h3>🐊 Araripesuchus gomesii</h3>
+          </div>
+          <div class="gallery-back-body">
+            <div class="gallery-info-row"><span class="gi-label">📍 Onde:</span><span>Chapada do Araripe (CE/PE/PI)</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📏 Tamanho:</span><span>~50 cm (tamanho de gato!)</span></div>
+            <div class="gallery-info-row"><span class="gi-label">⚖️ Peso:</span><span>Cerca de 5 kg</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🍽️ Dieta:</span><span>Onívoro — comia peixes, insetos, tudo!</span></div>
+            <div class="gallery-info-row"><span class="gi-label">📅 Quando:</span><span>~110 milhões de anos atrás</span></div>
+            <div class="gallery-info-row"><span class="gi-label">🌟 Curiosidade:</span><span>Mini-jacaré pré-histórico! Vivia em lagoas do Nordeste e seus parentes também foram achados na África!</span></div>
+            <p class="gallery-tap-back">👆 Toque para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CURIOSIDADES -->
+<section id="curiosidades">
+  <h2 class="section-title"><span>💡 Curiosidades</span></h2>
+  <p class="section-subtitle">Toque nos cartões para virar e descobrir!</p>
+
+  <div class="curiosity-grid">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"><span class="flip-emoji">👣</span><h4>Por que só pegadas no RN?</h4><span class="tap-text">Toque para descobrir!</span></div>
+        <div class="flip-card-back"><span class="back-emoji">🔍</span><p>As rochas do RN são de um tipo (arenito) que preserva melhor pegadas do que ossos. Já do lado do Ceará, na Bacia Potiguar, as rochas calcárias preservaram fósseis de ossos inteiros!</p></div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"><span class="flip-emoji">🌍</span><h4>Brasil e África juntos?</h4><span class="tap-text">Toque para descobrir!</span></div>
+        <div class="flip-card-back"><span class="back-emoji">🗺️</span><p>Sim! Há 120 milhões de anos, Brasil e África eram grudados! Por isso o Angaturama é parente do Espinossauro africano — eles viviam pertinho um do outro!</p></div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"><span class="flip-emoji">🤮</span><h4>Vômito de Dinossauro?!</h4><span class="tap-text">Toque para descobrir!</span></div>
+        <div class="flip-card-back"><span class="back-emoji">😱</span><p>Em 2025, cientistas da UFRN descobriram um pterossauro fossilizado dentro do vômito de um dinossauro! O dino comeu, não conseguiu digerir e regurgitou há 110 milhões de anos!</p></div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"><span class="flip-emoji">🏛️</span><h4>Onde ver no RN?</h4><span class="tap-text">Toque para descobrir!</span></div>
+        <div class="flip-card-back"><span class="back-emoji">🎓</span><p>O Museu Câmara Cascudo, da UFRN em Natal, tem um laboratório de paleontologia onde são estudados fósseis da região! A pesquisadora Maria de Fátima foi quem encontrou as primeiras pegadas.</p></div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"><span class="flip-emoji">🦴</span><h4>Vale dos Dinossauros</h4><span class="tap-text">Toque para descobrir!</span></div>
+        <div class="flip-card-back"><span class="back-emoji">🏞️</span><p>Em Sousa, na Paraíba (bem pertinho do RN!), existe o Vale dos Dinossauros — um dos maiores sítios de pegadas da América do Sul, com milhares de rastros preservados!</p></div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"><span class="flip-emoji">🪶</span><h4>Penas coloridas!</h4><span class="tap-text">Toque para descobrir!</span></div>
+        <div class="flip-card-back"><span class="back-emoji">🎨</span><p>Cientistas descobriram que o Tupandactylus tinha filamentos parecidos com penas na crista — e elas eram coloridas! Os pterossauros do Nordeste eram mais bonitos do que imaginávamos!</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <h2 class="section-title"><span>🧠 Quiz dos Dinossauros</span></h2>
+  <p class="section-subtitle">Teste seus conhecimentos! Toque na resposta certa.</p>
+
+  <div class="quiz-container" id="quizContainer"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-dinos">🦕🦖🦅🐊🐾🌿</div>
+  <div class="credits">Feira de Ciências — Dinossauros Potiguares</div>
+  <p>Um passeio pelo tempo em que gigantes caminhavam pelo Rio Grande do Norte.<br>
+  Fontes: UFRN · UERJ · Museu Câmara Cascudo · Museu Nacional/UFRJ · Anais da Academia Brasileira de Ciências</p>
+</footer>
+
+<!-- PWA INSTALL BANNER -->
+<div class="pwa-install-banner" id="pwaBanner">
+  <div class="pwa-text">🦕 <strong>Instale o app!</strong><br>Use offline em qualquer lugar.</div>
+  <button class="pwa-install-btn" id="pwaInstallBtn" onclick="installPWA()">Instalar</button>
+  <button class="pwa-dismiss-btn" onclick="dismissPWA()">Agora não</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('show')">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ===== SCROLL TO (iOS compatible) =====
+function scrollTo_(sel) {
+  var el = document.querySelector(sel);
+  if (el) {
+    var y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 60;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
+// ===== NAV ACTIVE =====
+const sections = ['hero','cordel','dinos','timeline','paisagem','compare','galeria','curiosidades','quiz'];
+const navBtns = document.querySelectorAll('nav button');
+window.addEventListener('scroll', function() {
+  var cur = '';
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 200) cur = id;
+  });
+  navBtns.forEach(function(btn, i) { btn.classList.toggle('active', sections[i] === cur); });
+}, { passive: true });
+
+// ===== MODAL DATA =====
+const modalData = {
+  sauropode: {
+    emoji: '🦕', title: 'Saurópode Potiguar',
+    facts: [
+      { icon: '📏', text: 'Tinha entre 9 e 12 metros de altura — mais alto que um prédio de 3 andares!' },
+      { icon: '⚖️', text: 'Pesava até 13 toneladas — o mesmo que 3 elefantes adultos juntos!' },
+      { icon: '🌿', text: 'Era herbívoro — comia folhas de árvores altas graças ao seu pescoção enorme.' },
+      { icon: '👣', text: 'Suas pegadas foram encontradas na Fazenda dos Pingos, em Assú/RN.' },
+      { icon: '🪨', text: 'As pegadas ficaram marcadas na rocha da Formação Açu, na Bacia Potiguar.' },
+      { icon: '📅', text: 'Viveu há cerca de 120 milhões de anos, no período Cretáceo.' },
+      { icon: '👨‍🔬', text: 'Descoberta publicada em 2021 por pesquisadores da UFRN, UERJ e Instituto Cavanis.' },
+      { icon: '🏆', text: 'É o primeiro registro de dinossauros no território do Rio Grande do Norte!' },
+    ]
+  },
+  ornitopode: {
+    emoji: '🐾', title: 'Ornitópode Potiguar',
+    facts: [
+      { icon: '📏', text: 'Tinha cerca de 8 metros de comprimento — como um ônibus escolar!' },
+      { icon: '⚖️', text: 'Pesava aproximadamente 4 toneladas.' },
+      { icon: '🦶', text: '"Ornitópode" significa "pé de ave" — suas patas eram parecidas com as de aves!' },
+      { icon: '🌿', text: 'Era herbívoro — comia folhas, frutas e plantas baixas.' },
+      { icon: '🚶', text: 'Podia andar tanto em duas quanto em quatro patas, dependendo da velocidade.' },
+      { icon: '👣', text: 'Pegadas encontradas junto com as do Saurópode, em Assú/RN.' },
+      { icon: '🌍', text: 'Ornitópodes viveram em todos os continentes — eram muito bem-sucedidos!' },
+    ]
+  },
+  angaturama: {
+    emoji: '🦖', title: 'Angaturama limai',
+    facts: [
+      { icon: '📛', text: '"Angaturama" significa "nobre" em tupi — era um espírito protetor na cultura indígena.' },
+      { icon: '📏', text: 'Tinha entre 6 e 8 metros de comprimento e pesava cerca de 500 kg.' },
+      { icon: '🐊', text: 'Seu focinho era longo e fino, parecido com o de um crocodilo — perfeito para pescar!' },
+      { icon: '🐟', text: 'Comia principalmente peixes, mas também caçava pterossauros e outros animais.' },
+      { icon: '👪', text: 'Era parente do famoso Espinossauro africano — prova de que Brasil e África eram conectados!' },
+      { icon: '🏛️', text: 'Uma réplica de 60% do esqueleto foi montada no Museu Nacional do Rio de Janeiro.' },
+      { icon: '📍', text: 'Seus fósseis vieram da Chapada do Araripe, no Ceará, bem pertinho do RN.' },
+      { icon: '🦴', text: 'Descrito em 1996 pelos paleontólogos Alexander Kellner e Diogenes Campos.' },
+    ]
+  },
+  pterossauro: {
+    emoji: '🦅', title: 'Tupandactylus imperator',
+    facts: [
+      { icon: '📏', text: 'Tinha envergadura de cerca de 5 metros — de uma ponta de asa à outra!' },
+      { icon: '👑', text: 'Sua crista era enorme e provavelmente colorida — usada para atrair parceiros!' },
+      { icon: '🪶', text: 'Cientistas descobriram que tinha filamentos parecidos com penas na crista!' },
+      { icon: '✈️', text: 'NÃO era um dinossauro, mas um réptil voador — os pterossauros são um grupo separado.' },
+      { icon: '🐟', text: 'Alimentava-se de peixes e pequenos animais.' },
+      { icon: '🏔️', text: 'Viveu na região da Chapada do Araripe há 115 milhões de anos.' },
+      { icon: '🌊', text: 'Naquela época, a região era banhada por um mar raso, cheio de peixes.' },
+      { icon: '🇧🇷', text: 'A Chapada do Araripe é um dos melhores lugares do MUNDO para fósseis de pterossauros!' },
+    ]
+  },
+  santanaraptor: {
+    emoji: '🏃', title: 'Santanaraptor placidus',
+    facts: [
+      { icon: '📏', text: 'Era pequeno — cerca de 1,5 metro de comprimento, como uma criança grande.' },
+      { icon: '⚡', text: 'Era um corredor veloz! Caçava usando velocidade e agilidade.' },
+      { icon: '🥩', text: 'Carnívoro — comia insetos, lagartos e outros animais pequenos.' },
+      { icon: '🔬', text: 'Incrivelmente, preservou restos de tecidos moles — pele e vasos sanguíneos fossilizados!' },
+      { icon: '🏆', text: 'Isso é raríssimo e ajudou cientistas a entender como era a pele dos dinossauros.' },
+      { icon: '📍', text: 'Encontrado na Chapada do Araripe, Ceará.' },
+      { icon: '🐔', text: 'Era um terópode — do mesmo grupo dos raptores e... das aves modernas!' },
+    ]
+  },
+  araripesuchus: {
+    emoji: '🐊', title: 'Araripesuchus gomesii',
+    facts: [
+      { icon: '📏', text: 'Bem pequenino — apenas meio metro de comprimento!' },
+      { icon: '🐊', text: 'Era um crocodilomorfo — ancestral dos jacarés e crocodilos modernos.' },
+      { icon: '💧', text: 'Vivia em lagoas de água doce que existiam na Chapada do Araripe.' },
+      { icon: '🍽️', text: 'Comia peixes, insetos e pequenos animais — era um onívoro oportunista.' },
+      { icon: '🌍', text: 'Parentes dele foram encontrados também na África — mais uma prova de que os continentes eram conectados!' },
+      { icon: '📛', text: 'O nome "Araripesuchus" significa "crocodilo do Araripe".' },
+      { icon: '📅', text: 'Viveu há cerca de 110 milhões de anos, durante o Cretáceo.' },
+    ]
+  }
+};
+
+function openModal(key) {
+  const d = modalData[key];
+  if (!d) return;
+  const factsHtml = d.facts.map(f => `<li><span class="fact-icon">${f.icon}</span><span>${f.text}</span></li>`).join('');
+  document.getElementById('modalBody').innerHTML = `
+    <span class="modal-emoji">${d.emoji}</span>
+    <h2>${d.title}</h2>
+    <ul class="fact-list">${factsHtml}</ul>
+  `;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('show');
+  }
+}
+
+// ===== QUIZ =====
+const quizData = [
+  {
+    q: '🐾 Onde foram encontradas as primeiras pegadas de dinossauros do RN?',
+    opts: ['Natal', 'Mossoró', 'Assú', 'Caicó'],
+    correct: 2,
+    explanation: 'As pegadas foram encontradas na Fazenda dos Pingos, em Assú, na Formação Açu da Bacia Potiguar!'
+  },
+  {
+    q: '🦕 Quanto pesava o Saurópode que pisou no RN?',
+    opts: ['1 tonelada', '5 toneladas', '13 toneladas', '50 toneladas'],
+    correct: 2,
+    explanation: 'O Saurópode pesava até 13 toneladas — o equivalente a 3 elefantes africanos!'
+  },
+  {
+    q: '🦖 O que significa "Angaturama" na língua tupi?',
+    opts: ['Forte', 'Nobre', 'Veloz', 'Gigante'],
+    correct: 1,
+    explanation: '"Angaturama" significa "nobre" em tupi e é também o nome de um espírito protetor!'
+  },
+  {
+    q: '🌍 Há 120 milhões de anos, o Brasil estava grudado com qual continente?',
+    opts: ['Europa', 'Ásia', 'África', 'Antártida'],
+    correct: 2,
+    explanation: 'Brasil e África eram conectados! Por isso encontramos fósseis de parentes próximos nos dois continentes.'
+  },
+  {
+    q: '🦅 O Tupandactylus era um...',
+    opts: ['Dinossauro voador', 'Réptil voador (pterossauro)', 'Ave pré-histórica', 'Morcego gigante'],
+    correct: 1,
+    explanation: 'Pterossauros NÃO eram dinossauros e NÃO eram aves — eram répteis voadores, um grupo separado!'
+  },
+  {
+    q: '📅 Há quanto tempo viveram os dinossauros do RN?',
+    opts: ['1 milhão de anos', '65 milhões de anos', '120 milhões de anos', '500 milhões de anos'],
+    correct: 2,
+    explanation: 'As pegadas do RN têm cerca de 120 milhões de anos, do período Cretáceo!'
+  },
+  {
+    q: '🤮 O que foi encontrado dentro de um "vômito" de dinossauro no Nordeste?',
+    opts: ['Um peixe', 'Um ovo', 'Um pterossauro', 'Uma planta'],
+    correct: 2,
+    explanation: 'Cientistas da UFRN encontraram um pterossauro fossilizado dentro de um vômito de dinossauro!'
+  },
+  {
+    q: '🏛️ Qual museu do RN estuda os fósseis da região?',
+    opts: ['Museu Nacional', 'Museu Câmara Cascudo', 'Museu do Amanhã', 'Museu de Ciências'],
+    correct: 1,
+    explanation: 'O Museu Câmara Cascudo, da UFRN em Natal, tem um laboratório de paleontologia!'
+  },
+];
+
+let score = 0;
+let answered = 0;
+
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  let html = '';
+  quizData.forEach((q, i) => {
+    const optsHtml = q.opts.map((o, j) =>
+      `<button class="quiz-option" data-q="${i}" data-o="${j}" onclick="checkAnswer(${i},${j},this)">${String.fromCharCode(65+j)}) ${o}</button>`
+    ).join('');
+    html += `
+      <div class="quiz-card" id="quiz-${i}">
+        <h4>❓ Pergunta ${i+1} de ${quizData.length}</h4>
+        <p style="font-size:1.05rem;font-weight:700;margin-bottom:0.8rem;">${q.q}</p>
+        <div class="quiz-options">${optsHtml}</div>
+        <div class="quiz-feedback" id="fb-${i}"></div>
+      </div>
+    `;
+  });
+  html += `<div class="score-board" id="scoreBoard" style="display:none"><div class="score-label">🎉 Sua Pontuação</div><div class="score-num" id="scoreNum">0</div><div class="score-label" id="scoreMsg"></div></div>`;
+  container.innerHTML = html;
+}
+
+function checkAnswer(qi, oi, btn) {
+  const q = quizData[qi];
+  const btns = document.querySelectorAll(`[data-q="${qi}"]`);
+  btns.forEach(b => {
+    b.disabled = true;
+    const idx = parseInt(b.dataset.o);
+    if (idx === q.correct) b.classList.add('correct');
+    else if (idx === oi) b.classList.add('wrong');
+  });
+  const fb = document.getElementById(`fb-${qi}`);
+  if (oi === q.correct) {
+    score++;
+    fb.className = 'quiz-feedback show right';
+    fb.textContent = '✅ Acertou! ' + q.explanation;
+  } else {
+    fb.className = 'quiz-feedback show wrongfb';
+    fb.textContent = '❌ Não foi dessa vez! ' + q.explanation;
+  }
+  answered++;
+  if (answered === quizData.length) {
+    const sb = document.getElementById('scoreBoard');
+    sb.style.display = 'block';
+    document.getElementById('scoreNum').textContent = `${score}/${quizData.length}`;
+    const pct = score / quizData.length;
+    document.getElementById('scoreMsg').textContent =
+      pct === 1 ? '🏆 Perfeito! Você é um paleontólogo!' :
+      pct >= 0.7 ? '🌟 Muito bem! Quase um especialista!' :
+      pct >= 0.5 ? '👍 Bom trabalho! Continue estudando!' :
+      '📚 Que tal rever o conteúdo e tentar de novo?';
+    sb.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+renderQuiz();
+
+// ===== PWA: Inline Web App Manifest =====
+(function() {
+  var manifest = {
+    name: 'Dinossauros Potiguares',
+    short_name: 'Dinos RN',
+    description: 'Um Cordel da Pré-História do Rio Grande do Norte',
+    start_url: location.href,
+    display: 'standalone',
+    orientation: 'portrait',
+    theme_color: '#2C1810',
+    background_color: '#FDF5E6',
+    icons: [
+      {
+        src: 'data:image/svg+xml,' + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='#2C1810'/><text y='340' x='256' text-anchor='middle' font-size='280'>🦕</text></svg>"),
+        sizes: '512x512',
+        type: 'image/svg+xml',
+        purpose: 'any maskable'
+      },
+      {
+        src: 'data:image/svg+xml,' + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='30' fill='#2C1810'/><text y='130' x='96' text-anchor='middle' font-size='110'>🦕</text></svg>"),
+        sizes: '192x192',
+        type: 'image/svg+xml',
+        purpose: 'any maskable'
+      }
+    ]
+  };
+  var blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+  var link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = URL.createObjectURL(blob);
+  document.head.appendChild(link);
+})();
+
+// ===== PWA: Service Worker (inline, cache-first) =====
+if ('serviceWorker' in navigator) {
+  var swCode = `
+    var CACHE_NAME = 'dinos-potiguares-v3';
+    self.addEventListener('install', function(e) {
+      e.waitUntil(
+        caches.open(CACHE_NAME).then(function(cache) {
+          return cache.add(self.location.href.replace(/sw\\.js.*/, '').replace(/blob:.*/, location.href || '/'));
+        }).catch(function() {})
+      );
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', function(e) {
+      e.waitUntil(
+        caches.keys().then(function(names) {
+          return Promise.all(
+            names.filter(function(n) { return n !== CACHE_NAME; })
+                 .map(function(n) { return caches.delete(n); })
+          );
+        })
+      );
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', function(e) {
+      e.respondWith(
+        caches.match(e.request).then(function(cached) {
+          if (cached) return cached;
+          return fetch(e.request).then(function(response) {
+            if (response && response.status === 200) {
+              var clone = response.clone();
+              caches.open(CACHE_NAME).then(function(cache) {
+                cache.put(e.request, clone);
+              });
+            }
+            return response;
+          }).catch(function() {
+            return cached || new Response('Offline — abra a página com internet primeiro.', {
+              status: 503,
+              headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+            });
+          });
+        })
+      );
+    });
+  `;
+  var swBlob = new Blob([swCode], { type: 'application/javascript' });
+  var swUrl = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl, { scope: '/' }).catch(function() {
+    // Blob SW may not work in all environments, fail silently
+  });
+}
+
+// ===== PWA: Install Prompt =====
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (!localStorage.getItem('pwa-dismissed')) {
+    document.getElementById('pwaBanner').classList.add('show');
+  }
+});
+
+function installPWA() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(result) {
+      deferredPrompt = null;
+      document.getElementById('pwaBanner').classList.remove('show');
+    });
+  }
+}
+
+function dismissPWA() {
+  document.getElementById('pwaBanner').classList.remove('show');
+  localStorage.setItem('pwa-dismissed', '1');
+}
+
+// ===== iOS: Show custom install hint =====
+(function() {
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  if (isIOS && !isStandalone && !localStorage.getItem('pwa-dismissed')) {
+    setTimeout(function() {
+      var banner = document.getElementById('pwaBanner');
+      var installBtn = document.getElementById('pwaInstallBtn');
+      installBtn.textContent = 'Saiba como';
+      installBtn.onclick = function() {
+        alert('Para instalar:\n\n1. Toque no ícone de compartilhar (⬆️) no Safari\n2. Role e toque em "Adicionar à Tela de Início"\n3. Confirme tocando em "Adicionar"\n\nPronto! O app aparecerá na sua tela inicial!');
+      };
+      banner.classList.add('show');
+    }, 3000);
+  }
+})();
+</script>
+</body>
+</html>
